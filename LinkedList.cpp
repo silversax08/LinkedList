@@ -1,8 +1,15 @@
 #include "LinkedList.hpp"
+#include <string>
 
 std::string convert_linked_list_to_string(LinkedListNode* head)
 {
+    std::string linkedListString{"("};
 
+    linkedListString.append("");
+
+    linkedListString.append(")");
+
+    return linkedListString;
 }
 
 //void add_item_to_beginning_of_list(int *head, int value)
