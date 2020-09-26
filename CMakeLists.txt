@@ -17,6 +17,7 @@ add_library(${PROJECT_NAME} STATIC
 set(TEST_NAME ${PROJECT_NAME}_UnitTest)
 
 add_executable(${TEST_NAME}
+    convert_linked_list_to_string_test.cpp
     add_item_to_beginning_of_list_test.cpp
     add_item_to_end_of_list_test.cpp
     remove_first_item_in_list_test.cpp
