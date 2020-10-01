@@ -1,4 +1,4 @@
-﻿#include "LinkedList.hpp"
+#include "LinkedList.hpp"
 #include <string>
 #include <iostream>
 
@@ -111,7 +111,7 @@ void remove_last_item_in_list(LinkedListNode* &head)
 
 void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
 {
-    LinkedListNode *temp, *origin{nullptr}, *originMinusOne{nullptr}, *landing{nullptr};
+    LinkedListNode *temp, *origin{nullptr}, *originMinusOne{nullptr}, *landing{nullptr}, *placeholder{nullptr};
 //    int numberOfInstances{0};
 
     if(head == nullptr)
@@ -119,23 +119,29 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
     else
     {
         if(head->nextNode == nullptr && head->item == value)
+        {
+            delete head->nextNode;
             head = nullptr;
+        }
         else
         {
             if(head->nextNode != nullptr && head->item ==value)
             {
-                temp = head;
-                while(temp->item == value)
+                while(head->item == value)
                 {
-                    if(temp->nextNode == nullptr)
+                    if(head->nextNode == nullptr)
                     {
+                        delete head->nextNode;
                         head = nullptr;
                         return;
                     }
                     else
-                        temp = temp->nextNode;
+                    {
+                        placeholder = head->nextNode;
+                        delete head;
+                        head = placeholder;
+                    }
                 }
-                head = temp;
             }
             temp = head;
             while(temp->nextNode != nullptr)
@@ -149,27 +155,27 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
                 {
                     while(temp->item == value)
                     {
-                      if(temp->nextNode == nullptr)
-                      {
-                          originMinusOne->nextNode = nullptr;
-                          return;
-                      }
-                      else
-                      {
-                          landing = temp->nextNode;
-                          temp = temp->nextNode;
-                      }
+                        if(temp->nextNode == nullptr)
+                        {
+                            delete temp->nextNode;
+                            originMinusOne->nextNode = nullptr;
+                            return;
+                        }
+                        else
+                        {
+                            landing = temp->nextNode;
+                            delete originMinusOne->nextNode;
+                            originMinusOne->nextNode = landing;
+                            temp = originMinusOne->nextNode;
+                        }
                     }
                 }
-                if(landing!=nullptr)
-                {
-                    originMinusOne->nextNode = landing;
-                    landing = nullptr;
-                }
-
             }
             if(temp->item == value)
+            {
+                delete temp->nextNode;
                 origin->nextNode = nullptr;
+            }
 
         }
     }
