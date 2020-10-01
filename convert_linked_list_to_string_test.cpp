@@ -22,3 +22,13 @@ TEST(convertLinkedListToStringTest,whenConvertingLinkedListToString_ExpectCorrec
 
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
+
+TEST(convertLinkedListToStringTest,whenConvertingShortLinkedListToString_ExpectCorrectString)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{3,nullptr};
+
+    std::string expectedResult{"(3)"};
+
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
