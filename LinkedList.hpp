@@ -20,6 +20,6 @@ void remove_last_item_in_list(LinkedListNode* &head);
 
 void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value);
 
-//void clear_linked_list(int *head);
+void clear_linked_list(LinkedListNode* &head);
 
 #endif

@@ -182,7 +182,19 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
 
 }
 
-//void clear_linked_list(int *head)
-//{
+void clear_linked_list(LinkedListNode* &head)
+{
+    LinkedListNode *placeholder;
 
-//}
+    if(head == nullptr)
+        return;
+    else
+    {
+        while(head != nullptr)
+        {
+            placeholder = head->nextNode;
+            delete head;
+            head = placeholder;
+        }
+    }
+}
