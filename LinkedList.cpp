@@ -111,21 +111,61 @@ void remove_last_item_in_list(LinkedListNode* &head)
 
 void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
 {
-    LinkedListNode* temp;
+    LinkedListNode *temp, *origin{nullptr}, *originMinusOne{nullptr}, *landing{nullptr};
+//    int numberOfInstances{0};
 
-    if(head==nullptr)
-    {
-
-    }
-    else if(head->nextNode == nullptr && head->item == value)
-    {
-        delete head;
-        head = nullptr;
-    }
+    if(head == nullptr)
+        return;
     else
     {
+        if(head->nextNode == nullptr && head->item == value)
+            head = nullptr;
+        else if(head->nextNode != nullptr && head->item ==value)
+        {
+            temp = head;
+            while(temp->item == value)
+                temp = temp->nextNode;
+            head = temp;
+        }
+        else
+        {
+            temp = head;
+            while(temp->nextNode != nullptr)
+            {
+                originMinusOne = origin;
+                origin = temp;
 
+                if(temp->item != value)
+                    temp = temp->nextNode;
+                else
+                {
+                    while(temp->item == value)
+                    {
+                      if(temp->nextNode == nullptr)
+                      {
+                          originMinusOne->nextNode = nullptr;
+                          return;
+                      }
+                      else
+                      {
+                          landing = temp->nextNode;
+                          temp = temp->nextNode;
+                      }
+                    }
+                }
+                if(landing!=nullptr)
+                {
+                    originMinusOne->nextNode = landing;
+                    landing = nullptr;
+                }
+
+            }
+            if(temp->item == value)
+                origin->nextNode = nullptr;
+
+        }
     }
+
 }
 
 //void clear_linked_list(int *head)
