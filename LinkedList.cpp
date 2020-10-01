@@ -120,15 +120,23 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
     {
         if(head->nextNode == nullptr && head->item == value)
             head = nullptr;
-        else if(head->nextNode != nullptr && head->item ==value)
-        {
-            temp = head;
-            while(temp->item == value)
-                temp = temp->nextNode;
-            head = temp;
-        }
         else
         {
+            if(head->nextNode != nullptr && head->item ==value)
+            {
+                temp = head;
+                while(temp->item == value)
+                {
+                    if(temp->nextNode == nullptr)
+                    {
+                        head = nullptr;
+                        return;
+                    }
+                    else
+                        temp = temp->nextNode;
+                }
+                head = temp;
+            }
             temp = head;
             while(temp->nextNode != nullptr)
             {

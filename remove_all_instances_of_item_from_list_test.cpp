@@ -125,3 +125,62 @@ TEST(removeInstancesofItemFromList,whenMultipleItemsFromBeginningOfList_ExpectCo
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
+TEST(removeInstancesofItemFromList,whenMultipleItemsFromWholeList_ExpectCorrectList)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{1,nullptr};
+    head->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    remove_all_instances_of_item_from_list(head,1);
+    std::string expectedResult{"()"};
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
+
+TEST(removeInstancesofItemFromList,whenRemovingItemsFromBeginningAndMiddleOfList_ExpectCorrectList)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{1,nullptr};
+    head->nextNode = new LinkedListNode{8,nullptr};
+    head->nextNode->nextNode = new LinkedListNode{2,nullptr};
+    head->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{9,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{7,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{6,nullptr};
+    remove_all_instances_of_item_from_list(head,1);
+    std::string expectedResult{"(8 2 9 7 6)"};
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
+
+TEST(removeInstancesofItemFromList,whenRemovingItemsFromMiddleAndEndOfList_ExpectCorrectList)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{9,nullptr};
+    head->nextNode = new LinkedListNode{8,nullptr};
+    head->nextNode->nextNode = new LinkedListNode{2,nullptr};
+    head->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{9,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{7,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    remove_all_instances_of_item_from_list(head,1);
+    std::string expectedResult{"(9 8 2 9 7)"};
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
+
+TEST(removeInstancesofItemFromList,whenRemovingItemsFromBeginningAndMiddleAndEndOfList_ExpectCorrectList)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{1,nullptr};
+    head->nextNode = new LinkedListNode{8,nullptr};
+    head->nextNode->nextNode = new LinkedListNode{2,nullptr};
+    head->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{9,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{7,nullptr};
+    head->nextNode->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
+    remove_all_instances_of_item_from_list(head,1);
+    std::string expectedResult{"(8 2 9 7)"};
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
