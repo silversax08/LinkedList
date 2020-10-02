@@ -10,7 +10,7 @@ TEST(addItemToBeginningOfList,whenAddingAnItemToBlankList_ExpectCorrectList)
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(addItemToBeginningOfList,whenAddingAnItemToShortList_ExpectCorrectList)
+TEST(addItemToBeginningOfList,whenAddingAnItemToAOneElementList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     int number{5};

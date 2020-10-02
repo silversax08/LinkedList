@@ -11,7 +11,17 @@ TEST(convertLinkedListToStringTest,whenConvertingEmptyLinkedListToString_ExpectC
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(convertLinkedListToStringTest,whenConvertingLinkedListToString_ExpectCorrectString)
+TEST(convertLinkedListToStringTest,whenConvertingAOneElementListToString_ExpectCorrectString)
+{
+    LinkedListNode *head{nullptr};
+    head = new LinkedListNode{3,nullptr};
+
+    std::string expectedResult{"(3)"};
+
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+}
+
+TEST(convertLinkedListToStringTest,whenConvertingLongerLinkedListToString_ExpectCorrectString)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -19,16 +29,6 @@ TEST(convertLinkedListToStringTest,whenConvertingLinkedListToString_ExpectCorrec
     head->nextNode->nextNode = new LinkedListNode{7,nullptr};
 
     std::string expectedResult{"(3 5 7)"};
-
-    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
-}
-
-TEST(convertLinkedListToStringTest,whenConvertingShortLinkedListToString_ExpectCorrectString)
-{
-    LinkedListNode *head{nullptr};
-    head = new LinkedListNode{3,nullptr};
-
-    std::string expectedResult{"(3)"};
 
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }

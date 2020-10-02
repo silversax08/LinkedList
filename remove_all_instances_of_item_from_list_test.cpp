@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "LinkedList.hpp"
 
-TEST(removeInstancesofItemFromList,whenRemovingAnItemFromBlankList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingAnItemFromBlankList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     remove_all_instances_of_item_from_list(head,3);
@@ -9,7 +9,7 @@ TEST(removeInstancesofItemFromList,whenRemovingAnItemFromBlankList_ExpectCorrect
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingAnItemFromAOneElementList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingAnItemFromAOneElementList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -18,7 +18,7 @@ TEST(removeInstancesofItemFromList,whenRemovingAnItemFromAOneElementList_ExpectC
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingNoItemsFromAList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingNoItemsFromAList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -28,7 +28,7 @@ TEST(removeInstancesofItemFromList,whenRemovingNoItemsFromAList_ExpectCorrectLis
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingAnItemFromEndOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingAnItemFromEndOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -41,7 +41,7 @@ TEST(removeInstancesofItemFromList,whenRemovingAnItemFromEndOfList_ExpectCorrect
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingTwoItemsFromEndOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingTwoItemsFromEndOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -54,7 +54,7 @@ TEST(removeInstancesofItemFromList,whenRemovingTwoItemsFromEndOfList_ExpectCorre
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingItemFromMiddleOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingItemFromMiddleOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -67,7 +67,7 @@ TEST(removeInstancesofItemFromList,whenRemovingItemFromMiddleOfList_ExpectCorrec
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingTwoConsecutiveItemsFromMiddleOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingTwoConsecutiveItemsFromMiddleOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -80,7 +80,7 @@ TEST(removeInstancesofItemFromList,whenRemovingTwoConsecutiveItemsFromMiddleOfLi
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingTwoSeparatedItemsFromMiddleOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingTwoSeparatedItemsFromMiddleOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{3,nullptr};
@@ -95,7 +95,7 @@ TEST(removeInstancesofItemFromList,whenRemovingTwoSeparatedItemsFromMiddleOfList
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingItemFromBeginningOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingItemFromBeginningOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{1,nullptr};
@@ -110,7 +110,7 @@ TEST(removeInstancesofItemFromList,whenRemovingItemFromBeginningOfList_ExpectCor
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenMultipleItemsFromBeginningOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingMultipleItemsFromBeginningOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{1,nullptr};
@@ -125,22 +125,18 @@ TEST(removeInstancesofItemFromList,whenMultipleItemsFromBeginningOfList_ExpectCo
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenMultipleItemsFromWholeList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingWholeList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{1,nullptr};
     head->nextNode = new LinkedListNode{1,nullptr};
     head->nextNode->nextNode = new LinkedListNode{1,nullptr};
-    head->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
-    head->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
-    head->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
-    head->nextNode->nextNode->nextNode->nextNode->nextNode->nextNode = new LinkedListNode{1,nullptr};
     remove_all_instances_of_item_from_list(head,1);
     std::string expectedResult{"()"};
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingItemsFromBeginningAndMiddleOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingItemsFromBeginningAndMiddleOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{1,nullptr};
@@ -155,7 +151,7 @@ TEST(removeInstancesofItemFromList,whenRemovingItemsFromBeginningAndMiddleOfList
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingItemsFromMiddleAndEndOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingItemsFromMiddleAndEndOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{9,nullptr};
@@ -170,7 +166,7 @@ TEST(removeInstancesofItemFromList,whenRemovingItemsFromMiddleAndEndOfList_Expec
     EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
 }
 
-TEST(removeInstancesofItemFromList,whenRemovingItemsFromBeginningAndMiddleAndEndOfList_ExpectCorrectList)
+TEST(removeInstancesOfItemFromList,whenRemovingItemsFromBeginningAndMiddleAndEndOfList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};
     head = new LinkedListNode{1,nullptr};
