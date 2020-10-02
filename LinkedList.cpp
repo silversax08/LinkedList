@@ -4,29 +4,16 @@
 
 std::string convert_linked_list_to_string(LinkedListNode* head)
 {
-    std::string linkedListString{"("};
-    LinkedListNode *while_loop_position;
+    std::string linkedListString{""};
 
     if(head==nullptr)
-    {
-    }
+        linkedListString="()";
     else
-    {
-        while_loop_position=head;
-
-        while(while_loop_position->nextNode!=nullptr)
-        {
-            linkedListString.append(std::to_string(while_loop_position->item));
-            linkedListString.append(" ");
-            while_loop_position=while_loop_position->nextNode;
-        }
-        linkedListString.append(std::to_string(while_loop_position->item));
-    }
-
-    linkedListString.append(")");
+        add_values_to_string_with_spacing_between(head,linkedListString);
 
     return linkedListString;
 }
+
 
 void add_item_to_beginning_of_list(LinkedListNode* &head, int value)
 {
@@ -197,4 +184,22 @@ void clear_linked_list(LinkedListNode* &head)
             head = placeholder;
         }
     }
+}
+
+
+void add_values_to_string_with_spacing_between(LinkedListNode* &head, std::string &linkedListString)
+{
+    LinkedListNode *whileLoopPosition{head};
+
+    linkedListString="(";
+
+    while(whileLoopPosition->nextNode!=nullptr)
+    {
+        linkedListString.append(std::to_string(whileLoopPosition->item));
+        linkedListString.append(" ");
+        whileLoopPosition=whileLoopPosition->nextNode;
+    }
+
+    linkedListString.append(std::to_string(whileLoopPosition->item));
+    linkedListString.append(")");
 }
