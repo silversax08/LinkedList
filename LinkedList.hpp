@@ -24,4 +24,8 @@ void clear_linked_list(LinkedListNode* &head);
 
 void add_values_to_string_with_spacing_between(LinkedListNode* &head, std::string &linkedListString);
 
+void clear_one_element_list(LinkedListNode* &head);
+
+void remove_next_value(LinkedListNode* &head);
+
 #endif

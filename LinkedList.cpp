@@ -6,7 +6,7 @@ std::string convert_linked_list_to_string(LinkedListNode* head)
 {
     std::string linkedListString{""};
 
-    if(head==nullptr)
+    if(head == nullptr)
         linkedListString="()";
     else
         add_values_to_string_with_spacing_between(head,linkedListString);
@@ -17,31 +17,27 @@ std::string convert_linked_list_to_string(LinkedListNode* head)
 
 void add_item_to_beginning_of_list(LinkedListNode* &head, int value)
 {
-    LinkedListNode* newFirstNode;
-
-    if(head==nullptr)
+    if(head == nullptr)
     {
         head = new LinkedListNode{value,nullptr};
     }
     else
     {
-        newFirstNode = new LinkedListNode{value,head};
+        LinkedListNode* newFirstNode{new LinkedListNode{value,head}};
         head = newFirstNode;
     }
 }
 
 void add_item_to_end_of_list(LinkedListNode* &head, int value)
 {
-    LinkedListNode *placeholder{head};
-
-    if(head==nullptr)
+    if(head == nullptr)
     {
         head = new LinkedListNode{value,nullptr};
     }
     else
     {
-        placeholder = head;
-        while(placeholder->nextNode!=nullptr)
+        LinkedListNode* placeholder{head};
+        while(placeholder->nextNode != nullptr)
         {
             placeholder = placeholder->nextNode;
         }
@@ -51,19 +47,15 @@ void add_item_to_end_of_list(LinkedListNode* &head, int value)
 
 void remove_first_item_in_list(LinkedListNode* &head)
 {
-    LinkedListNode* temp;
-    if(head==nullptr)
+    if(head == nullptr)
+        return;
+    else if(head->nextNode == nullptr)
     {
-
-    }
-    else if(head->nextNode==nullptr)
-    {
-        delete head;
-        head = nullptr;
+        clear_one_element_list(head);
     }
     else
     {
-        temp = head->nextNode;
+        LinkedListNode* temp{head->nextNode};
         delete head;
         head = temp;
     }
@@ -71,21 +63,15 @@ void remove_first_item_in_list(LinkedListNode* &head)
 
 void remove_last_item_in_list(LinkedListNode* &head)
 {
-    LinkedListNode* temp;
-
     if(head==nullptr)
-    {
-
-    }
+        return;
     else if(head->nextNode==nullptr)
     {
-        delete head;
-        head = nullptr;
+        clear_one_element_list(head);
     }
     else
     {
-        temp = head;
-
+        LinkedListNode* temp{head};
         while(temp->nextNode->nextNode != nullptr)
         {
             temp = temp -> nextNode;
@@ -98,8 +84,7 @@ void remove_last_item_in_list(LinkedListNode* &head)
 
 void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
 {
-    LinkedListNode *temp, *origin{nullptr}, *originMinusOne{nullptr}, *landing{nullptr}, *placeholder{nullptr};
-//    int numberOfInstances{0};
+    LinkedListNode *origin{nullptr}, *originMinusOne{nullptr}, *landing{nullptr}, *placeholder{nullptr};
 
     if(head == nullptr)
         return;
@@ -107,8 +92,7 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
     {
         if(head->nextNode == nullptr && head->item == value)
         {
-            delete head->nextNode;
-            head = nullptr;
+            clear_one_element_list(head);
         }
         else
         {
@@ -130,7 +114,7 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
                     }
                 }
             }
-            temp = head;
+            LinkedListNode* temp{head};
             while(temp->nextNode != nullptr)
             {
                 originMinusOne = origin;
@@ -171,17 +155,13 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
 
 void clear_linked_list(LinkedListNode* &head)
 {
-    LinkedListNode *placeholder;
-
     if(head == nullptr)
         return;
     else
     {
         while(head != nullptr)
         {
-            placeholder = head->nextNode;
-            delete head;
-            head = placeholder;
+            remove_next_value(head);
         }
     }
 }
@@ -202,4 +182,17 @@ void add_values_to_string_with_spacing_between(LinkedListNode* &head, std::strin
 
     linkedListString.append(std::to_string(whileLoopPosition->item));
     linkedListString.append(")");
+}
+
+void clear_one_element_list(LinkedListNode* &head)
+{
+    delete head->nextNode;
+    head = nullptr;
+}
+
+void remove_next_value(LinkedListNode* &head)
+{
+    LinkedListNode* placeholder{head->nextNode};
+    delete head;
+    head = placeholder;
 }
