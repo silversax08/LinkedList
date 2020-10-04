@@ -8,7 +8,7 @@ TEST(convertLinkedListToStringTest,whenConvertingEmptyLinkedListToString_ExpectC
 
     std::string expectedResult{"()"};
 
-    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+    EXPECT_EQ(expectedResult,private_functions::convert_linked_list_to_string(head));
 }
 
 TEST(convertLinkedListToStringTest,whenConvertingAOneElementListToString_ExpectCorrectString)
@@ -18,7 +18,7 @@ TEST(convertLinkedListToStringTest,whenConvertingAOneElementListToString_ExpectC
 
     std::string expectedResult{"(3)"};
 
-    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+    EXPECT_EQ(expectedResult,private_functions::convert_linked_list_to_string(head));
 }
 
 TEST(convertLinkedListToStringTest,whenConvertingLongerLinkedListToString_ExpectCorrectString)
@@ -30,5 +30,5 @@ TEST(convertLinkedListToStringTest,whenConvertingLongerLinkedListToString_Expect
 
     std::string expectedResult{"(3 5 7)"};
 
-    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+    EXPECT_EQ(expectedResult,private_functions::convert_linked_list_to_string(head));
 }

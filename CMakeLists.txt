@@ -25,6 +25,7 @@ add_executable(${TEST_NAME}
     remove_all_instances_of_item_from_list_test.cpp
     clear_linked_list_test.cpp
     LinkedListAcceptanceTest.cpp
+    LinkedListClassAcceptanceTest.cpp
     )
 
 target_link_libraries(${TEST_NAME}  ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} ${PROJECT_NAME})
