@@ -32,17 +32,23 @@ void clear_one_element_list(LinkedListNode* &head);
 
 void remove_next_value(LinkedListNode* &head);
 
-void clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(LinkedListNode* &head, int value);
+bool clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(LinkedListNode* &head, int value);
 
-void delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedListNode* &temp, LinkedListNode* &originMinusOne);
+bool delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedListNode* &temp, LinkedListNode* &originMinusOne);
 
-void look_in_middle_of_list_for_value_and_delete_if_found(int &value, LinkedListNode* &temp, LinkedListNode* &origin, LinkedListNode* &originMinusOne);
+bool look_in_middle_of_list_for_value_and_delete_if_found(int &value, LinkedListNode* &temp, LinkedListNode* &origin, LinkedListNode* &originMinusOne);
 
 class LinkedList
 {
 private:
     LinkedListNode* head{nullptr};
+
 public:
+    ~LinkedList()
+    {
+        private_functions::clear_linked_list(head);
+    }
+
     std::string convert_linked_list_to_string()
     {
        return private_functions::convert_linked_list_to_string(head);

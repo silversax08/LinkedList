@@ -20,9 +20,7 @@ std::string convert_linked_list_to_string(LinkedListNode* head)
 void add_item_to_beginning_of_list(LinkedListNode* &head, int value)
 {
     if(head == nullptr)
-    {
         head = new LinkedListNode{value,nullptr};
-    }
     else
     {
         LinkedListNode* newFirstNode{new LinkedListNode{value,head}};
@@ -33,16 +31,13 @@ void add_item_to_beginning_of_list(LinkedListNode* &head, int value)
 void add_item_to_end_of_list(LinkedListNode* &head, int value)
 {
     if(head == nullptr)
-    {
         head = new LinkedListNode{value,nullptr};
-    }
     else
     {
         LinkedListNode* placeholder{head};
         while(placeholder->nextNode != nullptr)
-        {
             placeholder = placeholder->nextNode;
-        }
+
         placeholder->nextNode = new LinkedListNode{value,nullptr};
     }
 }
@@ -52,9 +47,7 @@ void remove_first_item_in_list(LinkedListNode* &head)
     if(head == nullptr)
         return;
     else if(head->nextNode == nullptr)
-    {
         clear_one_element_list(head);
-    }
     else
     {
         LinkedListNode* temp{head->nextNode};
@@ -68,16 +61,12 @@ void remove_last_item_in_list(LinkedListNode* &head)
     if(head==nullptr)
         return;
     else if(head->nextNode==nullptr)
-    {
         clear_one_element_list(head);
-    }
     else
     {
         LinkedListNode* temp{head};
         while(temp->nextNode->nextNode != nullptr)
-        {
             temp = temp -> nextNode;
-        }
 
         delete temp->nextNode->nextNode;
         temp->nextNode = nullptr;
@@ -96,30 +85,16 @@ void remove_all_instances_of_item_from_list(LinkedListNode* &head, int value)
         }
         else
         {
-            clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(head,value);
-            if(head == nullptr)
+            if (clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(head,value)==false)
                 return;
 
             LinkedListNode* temp{head};
             LinkedListNode* origin{nullptr};
             LinkedListNode* originMinusOne{head};
-//            look_in_middle_of_list_for_value_and_delete_if_found(value, temp, origin, originMinusOne);
-//            if(originMinusOne == nullptr)
-//                return;
-            while(temp->nextNode != nullptr)
-            {
-                originMinusOne = origin;
-                origin = temp;
 
-                if(temp->item != value)
-                    temp = origin->nextNode;
-                else
-                {
-                    delete_multiple_of_the_same_value_that_are_in_sequence(value, temp, originMinusOne);
-                    if(originMinusOne->nextNode == nullptr)
-                        return;
-                }
-            }
+            if (look_in_middle_of_list_for_value_and_delete_if_found(value, temp, origin, originMinusOne) == false)
+                return;
+
             if(temp->item == value)
                 remove_next_value(origin->nextNode);
         }
@@ -132,12 +107,8 @@ void clear_linked_list(LinkedListNode* &head)
     if(head == nullptr)
         return;
     else
-    {
         while(head != nullptr)
-        {
             remove_next_value(head);
-        }
-    }
 }
 
 }
@@ -173,7 +144,7 @@ void remove_next_value(LinkedListNode* &head)
     head = placeholder;
 }
 
-void clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(LinkedListNode* &head, int value)
+bool clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_value(LinkedListNode* &head, int value)
 {
     if(head->nextNode != nullptr && head->item ==value)
     {
@@ -182,7 +153,7 @@ void clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_va
             if(head->nextNode == nullptr)
             {
                 clear_one_element_list(head);
-                return;
+                return false;
             }
             else
             {
@@ -190,9 +161,10 @@ void clear_beginning_of_list_until_it_hits_a_number_that_is_not_the_specified_va
             }
         }
     }
+    return true;
 }
 
-void delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedListNode* &temp, LinkedListNode* &originMinusOne)
+bool delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedListNode* &temp, LinkedListNode* &originMinusOne)
 {
     while(temp->item == value)
     {
@@ -200,7 +172,7 @@ void delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedLi
         {
             delete temp->nextNode;
             originMinusOne->nextNode = nullptr;
-            return;
+            return false;
         }
         else
         {
@@ -210,9 +182,10 @@ void delete_multiple_of_the_same_value_that_are_in_sequence(int &value, LinkedLi
             temp = originMinusOne->nextNode;
         }
     }
+    return true;
 }
 
-void look_in_middle_of_list_for_value_and_delete_if_found(int &value, LinkedListNode* &temp, LinkedListNode* &origin, LinkedListNode* &originMinusOne)
+bool look_in_middle_of_list_for_value_and_delete_if_found(int &value, LinkedListNode* &temp, LinkedListNode* &origin, LinkedListNode* &originMinusOne)
 {
     while(temp->nextNode != nullptr)
     {
@@ -222,10 +195,8 @@ void look_in_middle_of_list_for_value_and_delete_if_found(int &value, LinkedList
         if(temp->item != value)
             temp = origin->nextNode;
         else
-        {
-            delete_multiple_of_the_same_value_that_are_in_sequence(value, temp, originMinusOne);
-            if(originMinusOne->nextNode == nullptr)
-                return;
-        }
+            if (delete_multiple_of_the_same_value_that_are_in_sequence(value, temp, originMinusOne) == false)
+                return false;
     }
+    return true;
 }
