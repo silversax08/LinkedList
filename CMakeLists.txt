@@ -11,7 +11,9 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 add_library(${PROJECT_NAME} STATIC
         LinkedList.hpp
+        LinkedListFunctions.hpp
         LinkedList.cpp
+        LinkedListFunctions.cpp
   )
 
 set(TEST_NAME ${PROJECT_NAME}_UnitTest)

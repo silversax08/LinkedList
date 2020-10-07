@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "LinkedList.hpp"
+#include "LinkedListFunctions.hpp"
 
 TEST(clearList,whenRemovingItemsFromBlankList_ExpectCorrectList)
 {
