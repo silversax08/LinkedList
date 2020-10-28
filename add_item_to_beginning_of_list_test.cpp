@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "LinkedListFunctions.hpp"
-
+//There is code duplication that should be removed.  This can
+//be done by creating a function to create the initial list to operate on
 TEST(addItemToBeginningOfList,whenAddingAnItemToBlankList_ExpectCorrectList)
 {
     LinkedListNode *head{nullptr};

@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "LinkedListFunctions.hpp"
+//Do you clean up the memory in your tests?
 
 TEST(removeInstancesOfItemFromList,whenRemovingAnItemFromBlankList_ExpectCorrectList)
 {
